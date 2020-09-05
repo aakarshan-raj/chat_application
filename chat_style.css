@@ -1,0 +1,33 @@
+
+
+	#send{
+		background-color: #FD7B7B;
+		border-radius: 10px;
+		margin-top: 1%;
+		height: 60px;
+		position: fixed;
+
+        
+	}
+	label{
+		font-size: 30px;
+	}
+	#chat_plane{
+		width: 1900px;
+		height: 870px;
+		margin-left: 10px;
+		margin-top: 1000px;
+		border-color: red;
+		background-color: white;
+		margin-top: 10px;
+		overflow-y: scroll;
+		
+
+	}
+	}
+	body{
+		margin: 0;
+		padding: 0;
+		background-color: grey;
+
+	}

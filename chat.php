@@ -1,10 +1,15 @@
 <?php 
-session_start();
+include "db.php";
+global $connection;
 
-// if(!$_SESSION['name']){
-// 	header("Location:index.php");
-// }
-// $name =  $_SESSION['name'];
+if(isset($_POST['submit'])){
+	$message = $_POST['message'];
+	$query = "INSERT into chat_data(datee,name,message) VALUES(now(),'name','$message')";
+	$result = mysqli_query($connection,$query);
+	if(!$result){ echo " error ".mysqli_error($connection);}
+}
+
+
 ?>
 
 

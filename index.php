@@ -1,8 +1,7 @@
 <?php 
 
-$connection = mysqli_connect("localhost","padmin","password","darknet");
-if(!$connection){ echo "Ereror";};
-
+include "db.php";
+global $connection;
 
 ?>
 

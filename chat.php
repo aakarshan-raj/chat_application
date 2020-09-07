@@ -5,7 +5,10 @@ global $connection;
 
 if(isset($_POST['submit'])){
 	$message = $_POST['message'];
-	$query = "INSERT into chat_data(datee,name,message) VALUES(now(),'name','$message')";
+	$hours = getdate(time())['hours'];
+	$min  = getdate(time())['minutes'];
+	$now = $hours.":".$min;
+	$query = "INSERT into chat_data(send_time,name,message) VALUES('$now','name','$message')";
 	$result = mysqli_query($connection,$query);
 	if(!$result){ echo " error ".mysqli_error($connection);}
 }
@@ -22,11 +25,11 @@ if(isset($_POST['submit'])){
 $query_message = "SELECT * FROM chat_data ORDER BY id DESC";
 $result_message = mysqli_query($connection,$query_message);
 while($row = mysqli_fetch_assoc($result_message)){
-	// $row['name'] = $result_message['name'];
-	// $row['time'] = $result_message['datee'];
-	// $row['message'] = $result_message['message'];
- echo $row['datee']." ".$row['name']." ".$row['message'];
- echo "<br><hr>";	
+   $time = $row['send_time'];
+   $name = $row['name'];
+   $message = $row['message'];
+ echo "[".$time."]"." ".$name." says:".$message;
+ echo "<br>";	
 }
 
 ?>
@@ -36,7 +39,7 @@ while($row = mysqli_fetch_assoc($result_message)){
 <div id = "send">
 <form action = "chat.php" method="post">
 	<br>
-<label><input type="submit" name="submit" value = "send"></label><input id = "box" type="text" name="message" size = 150 maxlength="200" placeholder= 'name'>
+<label><input type="submit" name="submit" class = "button" value = "send"></label><input id = "box" type="text" name="message" size = 150 maxlength="150" placeholder= 'name'>
 
 </form>
 </div>

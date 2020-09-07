@@ -1,4 +1,5 @@
 <?php 
+
 include "db.php";
 global $connection;
 
@@ -34,7 +35,8 @@ while($row = mysqli_fetch_assoc($result_message)){
 </div>
 <div id = "send">
 <form action = "chat.php" method="post">
-<label>message:</label><input type="text" name="message" size = 150 maxlength="150" placeholder= <?php echo "name" ?>>
-<input type="submit" name="submit" value = "send">
+	<br>
+<label><input type="submit" name="submit" value = "send"></label><input id = "box" type="text" name="message" size = 150 maxlength="200" placeholder= 'name'>
+
 </form>
 </div>

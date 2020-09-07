@@ -18,9 +18,15 @@ if(isset($_POST['submit'])){
 <link rel="stylesheet" type="text/css" href="chat_style.css">
 <div id = "chat_plane">
 <?php 
-
-
-
+$query_message = "SELECT * FROM chat_data";
+$result_message = mysqli_query($connection,$query_message);
+while($row = mysqli_fetch_assoc($result_message)){
+	// $row['name'] = $result_message['name'];
+	// $row['time'] = $result_message['datee'];
+	// $row['message'] = $result_message['message'];
+ echo $row['datee']." ".$row['name']." ".$row['message'];
+ echo "<br><hr>";	
+}
 
 ?>
 </head> 

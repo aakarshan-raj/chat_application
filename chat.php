@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
 <link rel="stylesheet" type="text/css" href="chat_style.css">
 <div id = "chat_plane">
 <?php 
-$query_message = "SELECT * FROM chat_data";
+$query_message = "SELECT * FROM chat_data ORDER BY id DESC";
 $result_message = mysqli_query($connection,$query_message);
 while($row = mysqli_fetch_assoc($result_message)){
 	// $row['name'] = $result_message['name'];

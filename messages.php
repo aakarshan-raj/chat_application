@@ -1,5 +1,5 @@
 <head>
-	<meta http-equiv="refresh" content="5">
+	<meta http-equiv="refresh" content="3">
 
 <link rel="stylesheet" type="text/css" href="chat_style.css">
 </head>

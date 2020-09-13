@@ -1,7 +1,7 @@
 <head>
 	<meta http-equiv="refresh" content="3">
 
-<link rel="stylesheet" type="text/css" href="chat_style.css">
+<link rel="stylesheet" type="text/css" href="style/chat_style.css">
 </head>
 <body>
 	<div id = "chat_plane">

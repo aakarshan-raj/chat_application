@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
 ?>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="chat_style.css">
+	<link rel="stylesheet" type="text/css" href="style/chat_style.css">
 
 </head>
 <div id = "send">

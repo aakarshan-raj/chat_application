@@ -6,7 +6,7 @@
 <body>
 	<div id = "chat_plane">
 <?php 
-       
+     session_start();  
 include "db.php";
 global $connection;
 
@@ -16,7 +16,7 @@ while($row = mysqli_fetch_assoc($result_message)){
    $time = $row['send_time'];
    $name = $row['name'];
    $message = $row['message'];
- echo "[".$time."]"." ".$name." says:".$message;
+ echo "[".$time."]"." ".$name." says:".strip_tags($message);
  echo "<br>";	
 }
 

@@ -1,11 +1,30 @@
 
 
 <?php 
+include "db.php";
+global $connection;
 session_start();
 
 if(isset($_POST['submit'])){
-	$_SESSION['name'] = $_POST['name'];
+	$name  = $_POST['name'];
+	$query_to_select = "select * from users";
+	$result_query = mysqli_query($connection,$query_to_select);
+	$all_users = array();
+	while($row = mysqli_fetch_assoc($result_query)){
+		$name_from_database = $row['username'];
+        $all_users[$name_from_database] = $name_from_database;
+	}
+	if($all_users[$name]){
+		echo "user already exists";
+
+	}
+	else{
+    
+	$_SESSION['name'] = $name;
+	$query = "INSERT into users(username) VALUES('$name')";
+	$result = mysqli_query($connection,$query);
 	header("Location:chat.php");
+}
 }
 
 

@@ -9,6 +9,13 @@ if(isset($_POST['submit'])){
 	$message = strip_tags(mysqli_real_escape_string($connection,$_POST['message']));
 	$hours = getdate(time())['hours'];
 	$min  = getdate(time())['minutes'];
+	if(strlen($hours)<2){
+		$hours = "0".$hours;
+	}
+	if(strlen($min)<2){
+		$min = "0".$min;
+	}
+	
 	$now = $hours.":".$min;
 	$query = "INSERT into chat_data(send_time,name,message) VALUES('$now','$name','$message')";
 	$result = mysqli_query($connection,$query);

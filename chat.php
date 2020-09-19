@@ -1,7 +1,11 @@
 <?php 
 session_start();
-
+include "db.php";
+global $connection;
 if(!$_SESSION['name']){
+	$fucking_name = $_POST["name"];
+	$query = "delete from users where username = '$fucking_name'";
+	$result = mysqli_query($connection,$query);
 	header("Location:index.php");
 }
 ?>

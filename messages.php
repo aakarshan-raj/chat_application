@@ -35,7 +35,6 @@ if(strlen($min)<2){
 }
 $current_time = $hour.":".$min;
 
-//User checking functionality, if last message of user was 5 min ago, disconnect him (two cases: user goes away, destory the name, but if user  )
 
 $all_user = "SELECT * FROM users";
 $all_user_result = mysqli_query($connection,$all_user);
@@ -47,9 +46,18 @@ while($chat_data = mysqli_fetch_assoc($user_time_result))
 
  $qname = $chat_data['name'];
  $qtime = $chat_data['send_time'];
+
+ 
 if($qtime[3] == $current_time[3]){
   if($qtime[4]+5<$current_time[4]){
-	delete_user($qname);
+  	if($_SESSION['name'] == $qname){
+  	session_unset();
+  	session_destroy();
+  }
+    delete_user($qname);
+    header("Location:index.php");
+
+
                                   }
                                  }
 elseif($qtime[3] != $current_time[3]){
@@ -58,7 +66,12 @@ elseif($qtime[3] != $current_time[3]){
 		                                       }
 
 	if($qtime[3].$qtime[4]+5<$current_time[3].$current_time[4]){
+		if($_SESSION['name'] == $qname){
+  	session_unset();
+  	session_destroy();
+  }
        delete_user($qname);
+       header("Location:index.php");
                                                                
 
                                  }

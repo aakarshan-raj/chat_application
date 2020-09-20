@@ -36,50 +36,7 @@ if(strlen($min)<2){
 $current_time = $hour.":".$min;
 
 
-$all_user = "SELECT * FROM users";
-$all_user_result = mysqli_query($connection,$all_user);
-$user_time = "SELECT send_time,name FROM chat_data";
-$user_time_result = mysqli_query($connection,$user_time);
-if(!$user_time_result){ echo "F failed"; }
-while($chat_data = mysqli_fetch_assoc($user_time_result))
-{
-
- $qname = $chat_data['name'];
- $qtime = $chat_data['send_time'];
-
- 
-if($qtime[3] == $current_time[3]){
-  if($qtime[4]+5<$current_time[4]){
-  	if($_SESSION['name'] == $qname){
-  	session_unset();
-  	session_destroy();
-  }
-    delete_user($qname);
-    header("Location:index.php");
-
-
-                                  }
-                                 }
-elseif($qtime[3] != $current_time[3]){
-	if($qtime[3] == 5 && $current_time[3] == 0){
-		$current_time[3]= $current_time[3]+6;
-		                                       }
-
-	if($qtime[3].$qtime[4]+5<$current_time[3].$current_time[4]){
-		if($_SESSION['name'] == $qname){
-  	session_unset();
-  	session_destroy();
-  }
-       delete_user($qname);
-       header("Location:index.php");
-                                                               
-
-                                 }
-}
-
-
-}
-
+alpha();
 
 
 ?>

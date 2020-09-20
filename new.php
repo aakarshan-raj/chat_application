@@ -1,9 +1,9 @@
 <?php 
 
-session_start();
-$_SESSION['name'] = "Aakarshan";
-echo session_id();
+$e = "03";
+$b = "05";
 
-print_r($_SESSION);
-phpinfo();
+echo $b+4;
+header("Refresh:0");
+echo time();
 ?>

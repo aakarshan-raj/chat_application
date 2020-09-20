@@ -1,9 +1,5 @@
 <?php 
 
-$e = "03";
-$b = "05";
+header("Location:new1.php?new=re&why=0");
 
-echo $b+4;
-header("Refresh:0");
-echo time();
 ?>

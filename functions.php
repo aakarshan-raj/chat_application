@@ -59,9 +59,11 @@ if($qtime[3] == $current_time[3])
   	{
   	session_unset();
   	session_destroy();
-    header("Refresh:0");
-    header("location:index.php");
-
+    // header("Refresh:0");
+    
+    header("location:chat.php?user=left");
+    exit();
+   
     }
     
     
@@ -84,9 +86,11 @@ elseif($qtime[3] != $current_time[3])
 		{
   	     session_unset();
   	     session_destroy();
-  	     header("Refresh:0");
-  	     header("location:index.php");
-
+  	     // header("Refresh:0");
+  	     
+  	     header("location:chat.php?user=left");
+         exit();
+        
  
         }
        

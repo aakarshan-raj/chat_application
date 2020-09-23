@@ -21,22 +21,9 @@ while($row = mysqli_fetch_assoc($result_message)){
  echo "<br>";	
 }
 
-//current time;
 
 
-$hour = getdate(time())['hours'];
-$min = getdate(time())['minutes'];
-
-if(strlen($hour)<2){
-	$hour = "0".$hour;
-}
-if(strlen($min)<2){
-	$min = "0".$min;
-}
-$current_time = $hour.":".$min;
-
-
-alpha();
+alpha(current_time());
 
 
 ?>

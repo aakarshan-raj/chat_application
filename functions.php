@@ -1,7 +1,11 @@
 <?php 
 include "db.php";
 
+function clean($connection,$words){
 
+  return strip_tags(mysqli_real_escape_string($connection,$words));
+
+}
 
 
 function delete_user($user){
@@ -10,6 +14,8 @@ function delete_user($user){
 	$result = mysqli_query($connection,$query);
 	if(!$result){ echo "User not deleted"; }
 	}
+
+
   function current_time(){
  $hour = getdate(time())['hours'];
 $min = getdate(time())['minutes'];
@@ -26,18 +32,8 @@ return $current_time;
   }
 
 
-function alpha(){
+function alpha($cur_time){
 	global $connection;
-$hour = getdate(time())['hours'];
-$min = getdate(time())['minutes'];
-
-if(strlen($hour)<2){
-	$hour = "0".$hour;
-}
-if(strlen($min)<2){
-	$min = "0".$min;
-}
-$current_time = $hour.":".$min;
 
 $all_user = "SELECT * FROM users";
 $all_user_result = mysqli_query($connection,$all_user);
@@ -50,53 +46,25 @@ while($chat_data = mysqli_fetch_assoc($user_time_result))
  $qtime = $chat_data['send_time'];
 
  
-if($qtime[3] == $current_time[3])
+if($qtime[3] == $cur_time[3])
 {
-  if($qtime[4]+5<$current_time[4])
+  if($qtime[4]+5<$cur_time[4])
   {
   	delete_user($qname);
-  	if($_SESSION['name'] == $qname)
-  	{
-  	session_unset();
-  	session_destroy();
-    // header("Refresh:0");
-    
-    header("location:chat.php?user=left");
-    exit();
-   
-    }
-    
-    
-
 
   }
 }
 
-elseif($qtime[3] != $current_time[3])
+elseif($qtime[3] != $cur_time[3])
 {
-	if($qtime[3] == 5 && $current_time[3] == 0)
+	if($qtime[3] == 5 && $cur_time[3] == 0)
 	{
-		$current_time[3]= $current_time[3]+6;
+		$current_time[3]= $cur_time[3]+6;
     }
 
-	if($qtime[3].$qtime[4]+5<$current_time[3].$current_time[4])
+	if($qtime[3].$qtime[4]+5<$cur_time[3].$cur_time[4])
 	{
 		delete_user($qname);
-		if($_SESSION['name'] == $qname)
-		{
-  	     session_unset();
-  	     session_destroy();
-  	     // header("Refresh:0");
-  	     
-  	     header("location:chat.php?user=left");
-         exit();
-        
- 
-        }
-       
-       // header("Location:index.php");
-                                                               
-
     }
 }
 }

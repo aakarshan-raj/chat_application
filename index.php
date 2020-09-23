@@ -2,11 +2,12 @@
 
 <?php 
 include "db.php";
+include "functions.php";
 global $connection;
 session_start();
 
 if(isset($_POST['submit'])){
-	$name  = $_POST['name'];
+	$name  = clean($connection,$_POST['name']);
 	$query_to_select = "select * from users";
 	$result_query = mysqli_query($connection,$query_to_select);
 	$all_users = array();
@@ -19,7 +20,7 @@ if(isset($_POST['submit'])){
 
 	}
 	else{
-    
+   
 	$_SESSION['name'] = $name;
 	$query = "INSERT into users(username) VALUES('$name')";
 	$result = mysqli_query($connection,$query);
@@ -29,46 +30,8 @@ if(isset($_POST['submit'])){
 
 
 ?>
+<link rel="stylesheet" type="text/css" href="style/index_style.css">
 
-<style type="text/css">
-	
-
-	div{
-		width: 400px;
-		height: 300px;
-		background-color: #ADECB4;
-		border: 10px solid #E98FEC;
-		margin-left: 38%;
-		margin-top: 10%;
-
-	}
-	form{
-		margin-top: 25%;
-		margin-left: 35%;
-		background-color:oranges;
-
-	}
-	input[type = "text"]{
-		border-radius: 10px;
-		height: 30px;
-		width: 200px;
-		margin-top: 17%;
-		margin-left: -14%;
-		font-size:20px;
-
-
-	}
-	input[type = "submit"]{
-		width: 180px;
-		margin-left: -10%;
-		margin-top: 20px;
-		font-size: 20px;
-}
-body{
-	background-color: #C0E0E9;
-}
-
-</style>
 <div>
 <form action="index.php" method="post">
 	<input type="text" name="name" placeholder="Alias/Aka">

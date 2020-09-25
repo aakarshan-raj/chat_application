@@ -1,11 +1,14 @@
-#Simple Chat application without any JS, for tor(Darknet) 
+Simple Chat application without any JS, for tor(Darknet) 
+===
 
-##Prerequisties
+Prerequisties
+==
 
 **php 5.0 or greater**
 **Mysql**	
 
-###Setup
+Setup
+=
 
 **Start with executing the table_creation.php file, it will add necessary tables to your database, don't forget to change the name of database,username and password.**
 **As this application is for tor that's why it doesn't use any javasvript as most of the time users on darknet disable javascript for security reasons ,but you can still host in on surface web, but their are many other chat application for that and they use javascipt which makes them look and work better.**

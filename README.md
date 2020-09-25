@@ -36,7 +36,6 @@ location ~ /\.ht {
 ```
 **or if you are using apache, it's simple to turn on the PHP**
 
-![Screenshot of Index page]
-(image/Screenshot_of_index.png)
+![Screenshot of Index page](image/Screenshot_of_index.png)
 
 ***If you have any questions mail me at aakarshan7raj@gmail.com***

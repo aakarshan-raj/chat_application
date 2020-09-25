@@ -10,9 +10,10 @@
 include "db.php";
 include "functions.php";
 global $connection;
-
-$query_message = "SELECT * FROM chat_data ORDER BY id DESC ";
+$number_of_messages = boom(100);
+$query_message = "SELECT * FROM chat_data WHERE id > $number_of_messages ORDER BY id DESC ";
 $result_message = mysqli_query($connection,$query_message);
+if(!$result_message){ echo mysqli_error($connection);}
 while($row = mysqli_fetch_assoc($result_message)){
    $time = $row['send_time'];
    $name = $row['name'];

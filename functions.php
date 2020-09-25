@@ -15,7 +15,16 @@ function delete_user($user){
 	if(!$result){ echo "User not deleted"; }
 	}
 
-
+function boom($number_of_messages){
+global $connection;
+$query_to_get_number_of_messages = "SELECT count(*) FROM chat_data";
+$result = mysqli_query($connection,$query_to_get_number_of_messages);
+while($row = mysqli_fetch_assoc($result)){
+	$nom = $row['count(*)'];
+}
+$nom =  $nom-$number_of_messages;
+return $nom;
+}
   function current_time(){
  $hour = getdate(time())['hours'];
 $min = getdate(time())['minutes'];
@@ -48,7 +57,7 @@ while($chat_data = mysqli_fetch_assoc($user_time_result))
  
 if($qtime[3] == $cur_time[3])
 {
-  if($qtime[4]+5<$cur_time[4])
+  if($qtime[4]+10<$cur_time[4])
   {
   	delete_user($qname);
 
@@ -59,10 +68,10 @@ elseif($qtime[3] != $cur_time[3])
 {
 	if($qtime[3] == 5 && $cur_time[3] == 0)
 	{
-		$current_time[3]= $cur_time[3]+6;
+		$cur_time[3] = $cur_time[3]+6;
     }
 
-	if($qtime[3].$qtime[4]+5<$cur_time[3].$cur_time[4])
+	if($qtime[3].$qtime[4]+10<$cur_time[3].$cur_time[4])
 	{
 		delete_user($qname);
     }

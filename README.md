@@ -37,6 +37,6 @@ location ~ /\.ht {
 **or if you are using apache, it's simple to turn on the PHP**
 
 ![Screenshot of Index page]
-(https://github.com/aakarshan-raj/chat_application/blob/master/image/Screenshot_of_index.png)
+(image/Screenshot_of_index.png)
 
 ***If you have any questions mail me at aakarshan7raj@gmail.com***

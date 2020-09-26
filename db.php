@@ -1,6 +1,6 @@
 <?php
 
-$connection = mysqli_connect("localhost","padmin","password","darknet");
+$connection = mysqli_connect("localhost","","","");
 if(!$connection){ echo "Error";};
 
 ?>
